@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Relógio de Cabeceira</string>
+    <string name="desc_settings">icone para configurações</string>
+    <string name="battery_level">Nível de bateria</string>
+</resources>
