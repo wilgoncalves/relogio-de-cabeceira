@@ -49,16 +49,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setListeners();
+        hideOptions();
     }
 
     @Override
-    public void onClick(View v) {
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(batteryReceiver);
+    }
 
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.checkbox_battery_level) {
+            toggleBatteryLevel();
+        } else if (view.getId() == R.id.imageview_settings) {
+
+        } else if (view.getId() == R.id.imageview_close) {
+
+        }
+    }
+
+    private void toggleBatteryLevel() {
+        boolean isVisible = binding.textviewBatteryLevel.getVisibility() == View.VISIBLE;
+        binding.textviewBatteryLevel.setVisibility(isVisible ? View.GONE : View.VISIBLE);
     }
 
     private void setListeners() {
         binding.checkboxBatteryLevel.setOnClickListener(this);
         binding.imageviewSettings.setOnClickListener(this);
         binding.imageviewClose.setOnClickListener(this);
+    }
+
+    private void hideOptions() {
+
     }
 }
